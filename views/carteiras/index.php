@@ -39,8 +39,8 @@ include '../../widgets/header.php';
                 <table class="table">
                     <thead>
                         <th>ID</th>
-                        <th>Name</th>
-                        <th>Criado em</th>
+                        <th>Nome</th>
+                        <th>Total na carteira</th>
                         <th>Ações</th>
                     </thead>
                     <tbody>

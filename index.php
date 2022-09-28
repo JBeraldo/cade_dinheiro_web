@@ -2,7 +2,7 @@
 session_start();
 
 if (empty($_SESSION["logado"]) || $_SESSION["logado"] == false) {
-    header('Location: pages/login/login.php');
+    header('Location: views/login/login.php');
 }
 ?>
 
@@ -37,7 +37,7 @@ include 'widgets/header.php';
                 <div class="p-5 text-center bg-light">
                     <h1 class="mb-3">Projeto PHP</h1>
                     <h4 class="mb-3">Listagem e CRUD de carteiras, orçamentos e transações</h4>
-                    <a class="btn btn-primary" href="pages/carteiras/index.php" role="button">Carteiras</a>
+                    <a class="btn btn-primary" href="views/carteiras/index.php" role="button">Carteiras</a>
                 </div>
                 <!-- Jumbotron -->
             </div>

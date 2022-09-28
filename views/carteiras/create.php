@@ -1,3 +1,7 @@
+    <?php
+$erro = $_GET["erro"] ?? null;
+?>
+
     <!DOCTYPE html>
     <html lang="en">
 
@@ -30,17 +34,34 @@ include '../../widgets/header.php';
                     <h2>Nova Carteira</h2>
                 </div>
                 <div class="col-md-4">
-                    <a href="pages/carteiras/index/index.php" class="btn btn-secondary btn-block">Voltar</a>
+                    <a href="views/carteiras/index/index.php" class="btn btn-secondary btn-block">Voltar</a>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-12">
-                    <form action="" method="POST">
+                <?php if ($erro): ?>
+                        <div style="background: #fafae1; padding: 15px; margin-bottom: 24px;">
+                            📢 Campos inválidos! Tente novamente.
+                        </div>
+                        <?php endif;?>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <form action="../../controllers/carteira.controller.php" method="POST">
                         <div class="row">
                             <div class="col-md-12">
                                 <label>Nome*</label>
-                                <input type="text" name="name" class="form-control" required>
+                                <input type="text" name="name" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-top: 10px">
+                            <div class="col-md-12">
+                                <label>Total na carteira*</label>
+                                <input id="total" type="number" name="total" class="form-control">
                             </div>
                         </div>
 
