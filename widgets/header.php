@@ -10,7 +10,10 @@
                     <a class="nav-link" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="pages/carteiras/index.php">Carteiras</a>
+                    <a class="nav-link" href="../carteiras/index.php">Carteiras</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../transacoes/index.php">Transações</a>
                 </li>
             </ul>
         </div>

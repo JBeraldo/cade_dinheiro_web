@@ -20,7 +20,7 @@
 
     <body>
         <?php
-include 'widgets/header.php';
+include '../../widgets/header.php';
 ?>
 
         <div style="margin-top: 70px" class="container">
