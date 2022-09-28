@@ -1,4 +1,4 @@
-<header>
+<header style="margin-bottom: 20px;">
     <nav class="navbar fixed-top navbar-expand-lg navbar-light scrolling-navbar bg-light">
         <a class="navbar-brand" href="#"><strong>Menu</strong></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,13 +10,13 @@
                     <a class="nav-link" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="pages/carteiras/index.php">Carteiras</a>
+                    <a class="nav-link" href="views/carteiras/index.php">Carteiras</a>
                 </li>
             </ul>
         </div>
         <?php
                 if ($_SESSION["logado"] || $_SESSION["logado"] == true) {
-                    echo '<a href="./pages/login/logout.php" class="btn btn-danger">Sair</a>';
+                    echo '<a href="./views/login/logout.php" class="btn btn-danger">Sair</a>';
                 }
             ?>
     </nav>

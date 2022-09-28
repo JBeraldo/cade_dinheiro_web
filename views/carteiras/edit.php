@@ -4,7 +4,7 @@
                 <h2>Editar Carteira</h2>
             </div>
             <div class="col-md-4">
-                <a href="pages/carteiras/index/index.php" class="btn btn-secondary btn-block">Voltar</a>
+                <a href="views/carteiras/index/index.php" class="btn btn-secondary btn-block">Voltar</a>
             </div>
         </div>
 
