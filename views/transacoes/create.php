@@ -35,29 +35,49 @@ include '../../widgets/header.php';
             </div>
         </div>
 
+        <?php
+if (isset($_GET["success"])) {
+    switch ($_GET["success"]) {
+        case "true":
+            echo ("<div class='alert alert-success' role='alert'>
+                        Transação criada com sucesso!
+                      </div>");
+            break;
+        case "false":
+            $message = $_GET["message"];
+            echo ("<div class='alert alert-danger' role='alert'>
+                        $message
+                      </div>");
+            break;
+    }
+}
+?>
+
         <div class="row">
             <div class="col-md-12">
-                <form action="" method="POST">
+                <form action="../../controllers/TransacaoController.php" method="POST">
                     <div class="row">
                         <div class="col-md-6">
-                            <label>Nome*</label>
-                            <input type="text" name="name" class="form-control" required>
+                            <label for="name">Nome*</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
                         </div>
                         <div class="col-md-6">
-                            <label>Tipo*</label>
-                            <select class="form-control" aria-label="Default select example">
-                                <option selected>Selecione o Tipo</option>
-                                <option value="1">Entrada</option>
-                                <option value="2">Saída</option>
+                            <label for="type">Tipo*</label>
+                            <select class="form-control" id="option" name="option" aria-label="Default select example">
+                                <option selected value="1">Entrada</option>
+                                <option value="0">Saída</option>
                             </select>
                         </div>
                         <div class="col-md-6">
-                            <label>Valor*</label>
-                            <input type="text" name="name" class="form-control" required>
+                            <label for="value">Valor*</label>
+                            <input type="text" name="value" id="value" class="form-control" required>
                         </div>
                         <div class="col-md-6">
-                            <label>data*</label>
-                            <input type="date" name="name" class="form-control" required>
+                            <label for="date">data*</label>
+                            <input type="date" name="date" id="date" class="form-control" required>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" name="target" id="target" value="create-transaction" hidden class="form-control visually-hidden" required>
                         </div>
                     </div>
 

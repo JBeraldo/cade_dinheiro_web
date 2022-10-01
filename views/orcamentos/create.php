@@ -28,7 +28,7 @@ include '../../widgets/header.php';
 
         <div class="row">
             <div class="col-md-8">
-                <h2>Nova Carteira</h2>
+                <h2>Novo Orçamento</h2>
             </div>
             <div class="col-md-4">
                 <a href="./index.php" class="btn btn-secondary btn-block">Voltar</a>
@@ -40,7 +40,7 @@ if (isset($_GET["success"])) {
     switch ($_GET["success"]) {
         case "true":
             echo ("<div class='alert alert-success' role='alert'>
-                        Carteira criada com sucesso!
+                        Orçamento criado com sucesso!
                       </div>");
             break;
         case "false":
@@ -55,7 +55,7 @@ if (isset($_GET["success"])) {
 
         <div class="row">
             <div class="col-md-12">
-                <form action="../../controllers/CarteiraController.php" method="POST">
+                <form action="../../controllers/OrcamentoController.php" method="POST">
                     <div class="row">
                         <div class="col-md-6">
                             <label for="name">Nome*</label>
@@ -66,7 +66,15 @@ if (isset($_GET["success"])) {
                             <input type="text" name="value" id="value" class="form-control" required>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" name="target" id="target" value="create-wallet" hidden class="form-control visually-hidden" required>
+                            <label for="type">Tipo*</label>
+                            <select class="form-control" id="option" name="option" aria-label="Default select example">
+                                <option selected value="0">Lazer</option>
+                                <option value="1">Saúde</option>
+                                <option value="2">Alimentação</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" name="target" id="target" value="create-budget" hidden class="form-control visually-hidden" required>
                         </div>
                     </div>
 

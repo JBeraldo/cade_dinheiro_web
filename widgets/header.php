@@ -15,9 +15,13 @@
                 <li class="nav-item">
                     <a class="nav-link" href="../transacoes/index.php">Transações</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../orcamentos/index.php">Orçamentos</a>
+                </li>
             </ul>
         </div>
         <?php
+                session_start();
                 if ($_SESSION["logado"] || $_SESSION["logado"] == true) {
                     echo '<a href="./views/login/logout.php" class="btn btn-danger">Sair</a>';
                 }
