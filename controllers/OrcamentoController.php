@@ -1,25 +1,41 @@
 <?php
 
-require ('./../models/Orcamento.php');
+namespace App\Controllers;
 
-if (isset($_POST["target"])) {
-    switch ($_POST["target"]) {
-        case "create-budget":
-            try {
-                $orc = new Orcamento(
-                    $_POST["name"],
-                    $_POST["value"],
-                    $_POST["option"],
-                );
+use App\Models\Orcamento;
+use App\Traits\ViewTrait;
+use Exception;
 
-                Orcamento::validate($orc);
+class OrcamentoController{
 
-                header("location: ./../views/orcamentos/create.php?success=true");
+    use ViewTrait;
 
-            } catch (Exception $e) {
-                $message = $e->getMessage();
-                header("location: ./../views/orcamentos/create.php?message=$message&success=false");
-            }
-            break;
+    public function indexPage()
+    {
+        $this->view('orcamentos.index');
+    }
+    public function createPage()
+    {
+        $this->view('orcamentos.create');
+    }
+
+    public function createModel()
+    {
+
+        try {
+            $cart = new Orcamento(
+                input()->post('name'),
+                input()->post('value'),
+                (int) input()->post('option'),
+            );
+
+            Orcamento::validate($cart);
+
+            redirect('/orcamentos/criar?success=true');
+            
+        } catch (Exception $e) {
+            $message = $e->getMessage();
+            redirect("/orcamentos/criar?message=$message&success=false");
+        }
     }
 }

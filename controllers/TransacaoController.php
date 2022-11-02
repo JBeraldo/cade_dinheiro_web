@@ -1,26 +1,42 @@
 <?php
 
-require ('./../models/Transacao.php');
+namespace App\Controllers;
 
-if (isset($_POST["target"])) {
-    switch ($_POST["target"]) {
-        case "create-transaction":
-            try {
-                $trans = new Transacao(
-                    $_POST["name"],
-                    $_POST["option"],
-                    $_POST["value"],
-                    $_POST["date"],
-                );
+use App\Models\Transacao;
+use App\Traits\ViewTrait;
+use Exception;
 
-                Transacao::validate($trans);
+class TransacaoController{
 
-                header("location: ./../views/transacoes/create.php?success=true");
+    use ViewTrait;
 
-            } catch (Exception $e) {
-                $message = $e->getMessage();
-                header("location: ./../views/transacoes/create.php?message=$message&success=false");
-            }
-            break;
+    public function indexPage()
+    {
+        $this->view('transacoes.index');
+    }
+    public function createPage()
+    {
+        $this->view('transacoes.create');
+    }
+
+    public function createModel()
+    {
+
+        try {
+            $cart = new Transacao(
+                input()->post('name'),
+                (int) input()->post('option',0),
+                input()->post('value'),
+                input()->post('date'),
+            );
+
+            Transacao::validate($cart);
+
+            redirect('/transacoes/criar?success=true');
+            
+        } catch (Exception $e) {
+            $message = $e->getMessage();
+            redirect("/transacoes/criar?message=$message&success=false");
+        }
     }
 }

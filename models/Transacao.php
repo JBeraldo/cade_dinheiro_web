@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Models;
+
+use Exception;
+
 class Transacao
 {
     public function __construct(

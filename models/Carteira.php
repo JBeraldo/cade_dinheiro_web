@@ -1,13 +1,19 @@
 <?php
 
+namespace App\Models;
+
+use Exception;
+
 class Carteira
 {
 
     public function __construct(
-        private readonly string $name,
-        private readonly string $value
+        string $name,
+        string $value
     )
     {
+        $this->name = $name;
+        $this->value = $value;
     }
 
     /**

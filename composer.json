@@ -1,0 +1,19 @@
+{
+    "name": "beraldo/cade_dinheiro_web",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\":"./"
+        }
+    },
+    "authors": [
+        {
+            "name": "Beraldo",
+            "email": "joao.angelo@webfloat.com.br"
+        }
+    ],
+    "require": {
+        "pecee/simple-router": "4.3.7.2",
+        "php-di/php-di": "^6.4"
+    }
+}

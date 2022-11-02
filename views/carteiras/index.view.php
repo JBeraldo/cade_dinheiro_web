@@ -20,7 +20,7 @@
 
 <body>
     <?php
-include '../../widgets/header.php';
+include './widgets/header.php';
 ?>
 
     <div style="margin-top: 70px" class="container">
@@ -30,7 +30,7 @@ include '../../widgets/header.php';
                 <h2>Lista de Carteiras</h2>
             </div>
             <div class="col-md-4">
-                <a href="create.php" class="btn btn-primary btn-block">Novo</a>
+                <a href="/carteiras/criar" class="btn btn-primary btn-block">Novo</a>
             </div>
         </div>
 

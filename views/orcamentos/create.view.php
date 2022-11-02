@@ -21,7 +21,7 @@
 
 <body>
     <?php
-include '../../widgets/header.php';
+include './widgets/header.php';
 ?>
 
     <div style="margin-top: 70px" class="container">
@@ -31,7 +31,7 @@ include '../../widgets/header.php';
                 <h2>Novo Orçamento</h2>
             </div>
             <div class="col-md-4">
-                <a href="./index.php" class="btn btn-secondary btn-block">Voltar</a>
+                <a href="/orcamentos" class="btn btn-secondary btn-block">Voltar</a>
             </div>
         </div>
 
@@ -55,7 +55,7 @@ if (isset($_GET["success"])) {
 
         <div class="row">
             <div class="col-md-12">
-                <form action="../../controllers/OrcamentoController.php" method="POST">
+                <form action="/orcamentos/criar" method="POST">
                     <div class="row">
                         <div class="col-md-6">
                             <label for="name">Nome*</label>

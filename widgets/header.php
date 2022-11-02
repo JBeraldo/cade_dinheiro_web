@@ -7,23 +7,25 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.php">Home</a>
+                    <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../carteiras/index.php">Carteiras</a>
+                    <a class="nav-link" href="/carteiras">Carteiras</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../transacoes/index.php">Transações</a>
+                    <a class="nav-link" href="/transacoes">Transações</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../orcamentos/index.php">Orçamentos</a>
+                    <a class="nav-link" href="/orcamentos">Orçamentos</a>
                 </li>
             </ul>
         </div>
         <?php
-                session_start();
-                if ($_SESSION["logado"] || $_SESSION["logado"] == true) {
-                    echo '<a href="./views/login/logout.php" class="btn btn-danger">Sair</a>';
+                if (session_status() == PHP_SESSION_NONE) {
+                    session_start();
+                }
+                if (isset($_SESSION["logado"]) && $_SESSION["logado"] == true) {
+                    echo '<a href="../login/logout.php" class="btn btn-danger">Sair</a>';
                 }
             ?>
     </nav>

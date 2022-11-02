@@ -21,17 +21,17 @@
 
 <body>
     <?php
-include '../../widgets/header.php';
+include './widgets/header.php';
 ?>
 
     <div style="margin-top: 70px" class="container">
 
         <div class="row">
             <div class="col-md-8">
-                <h2>Nova Carteira</h2>
+                <h2>Nova Transação</h2>
             </div>
             <div class="col-md-4">
-                <a href="./index.php" class="btn btn-secondary btn-block">Voltar</a>
+                <a href="/transacoes" class="btn btn-secondary btn-block">Voltar</a>
             </div>
         </div>
 
@@ -40,7 +40,7 @@ if (isset($_GET["success"])) {
     switch ($_GET["success"]) {
         case "true":
             echo ("<div class='alert alert-success' role='alert'>
-                        Carteira criada com sucesso!
+                        Transação criada com sucesso!
                       </div>");
             break;
         case "false":
@@ -55,18 +55,29 @@ if (isset($_GET["success"])) {
 
         <div class="row">
             <div class="col-md-12">
-                <form action="../../controllers/CarteiraController.php" method="POST">
+                <form action="/transacoes/criar" method="POST">
                     <div class="row">
                         <div class="col-md-6">
                             <label for="name">Nome*</label>
                             <input type="text" id="name" name="name" class="form-control" required>
                         </div>
                         <div class="col-md-6">
+                            <label for="type">Tipo*</label>
+                            <select class="form-control" id="option" name="option" aria-label="Default select example">
+                                <option selected value="1">Entrada</option>
+                                <option value="0">Saída</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
                             <label for="value">Valor*</label>
                             <input type="text" name="value" id="value" class="form-control" required>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" name="target" id="target" value="create-wallet" hidden class="form-control visually-hidden" required>
+                            <label for="date">data*</label>
+                            <input type="date" name="date" id="date" class="form-control" required>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" name="target" id="target" value="create-transaction" hidden class="form-control visually-hidden" required>
                         </div>
                     </div>
 

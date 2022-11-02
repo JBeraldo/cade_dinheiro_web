@@ -42,7 +42,7 @@ if (!empty($_SESSION['logado']) && $_SESSION['logado']) {
 
 <body>
     <?php
-include '../../widgets/header.php';
+include './widgets/header.php';
 ?>
     <div class="container" style="margin-top: 50px">
         <div class="row">
