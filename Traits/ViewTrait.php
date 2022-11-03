@@ -2,19 +2,29 @@
 
 namespace App\Traits;
 
+use App\Helpers\Logger;
+
 trait ViewTrait
 {
+
     public function view($path, $dados = [])
     {
-        $path = $this->preparePath($path);
-        foreach ($dados as $key => $value) {
-            ${$key} = $value;
-        }
+        $loader = new \Twig\Loader\FilesystemLoader('./Views');
+        $twig = new \Twig\Environment($loader);
 
-        return require("./Views/$path.view.php");
+        $path = $this->preparePath($path);
+        $dados["logado"] = $this->checkLogin();
+        echo $twig->render($path, $dados);
     }
-    private function preparePath($path)
+    public function preparePath($path)
     {
-        return str_replace('.',"/",$path);
+        return str_replace('.','/',$path) . '.twig';
+    }
+    public function checkLogin()
+    {
+        if (isset($_SESSION["logado"]) && $_SESSION["logado"] == true) {
+            return true;
+        }
+        return false;
     }
 }

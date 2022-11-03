@@ -8,10 +8,13 @@ class Carteira
 {
 
     public function __construct(
+        int $id = null,
         string $name,
-        string $value
+        string $value,
+
     )
     {
+        $this->id = $id;
         $this->name = $name;
         $this->value = $value;
     }

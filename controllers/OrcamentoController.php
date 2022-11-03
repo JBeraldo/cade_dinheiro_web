@@ -24,9 +24,9 @@ class OrcamentoController{
 
         try {
             $cart = new Orcamento(
-                input()->post('name'),
-                input()->post('value'),
-                (int) input()->post('option'),
+                input()->post('name')->getValue(),
+                input()->post('value')->getValue(),
+                input()->post('option')->getValue(),
             );
 
             Orcamento::validate($cart);

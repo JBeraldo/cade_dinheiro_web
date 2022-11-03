@@ -17,7 +17,10 @@ Router::get('/', [IndexController::class,'indexPage']);
 
 Router::get('/carteiras', [CarteiraController::class,'indexPage']);
 Router::get('/carteiras/criar', [CarteiraController::class,'createPage']);
+Router::get('/carteiras/editar/{id}', [CarteiraController::class,'updatePage']);
 Router::post('/carteiras/criar', [CarteiraController::class,'createModel']);
+Router::post('/carteiras/editar', [CarteiraController::class,'updateModel']);
+Router::post('/carteiras/excluir', [CarteiraController::class,'deleteModel']);
 
 Router::get('/transacoes', [TransacaoController::class,'indexPage']);
 Router::get('/transacoes/criar', [TransacaoController::class,'createPage']);

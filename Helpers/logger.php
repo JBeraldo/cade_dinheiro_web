@@ -15,7 +15,7 @@ class Logger{
             // create directory/folder uploads.
             mkdir($filename, 0777, true);
         }
-        $log_file_data = $filename.'/log_' . date('d-M-Y') . '.log';
+        $log_file_data = $filename.'/info'.'.log';
         // if you don't add `FILE_APPEND`, the file will be erased each time you add a log
         file_put_contents($log_file_data, $log_msg . "\n", FILE_APPEND);
     }

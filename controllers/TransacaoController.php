@@ -24,10 +24,10 @@ class TransacaoController{
 
         try {
             $cart = new Transacao(
-                input()->post('name'),
-                (int) input()->post('option',0),
-                input()->post('value'),
-                input()->post('date'),
+                input()->post('name')->getValue(),
+                input()->post('option',0)->getValue(),
+                input()->post('value')->getValue(),
+                input()->post('date')->getValue(),
             );
 
             Transacao::validate($cart);
