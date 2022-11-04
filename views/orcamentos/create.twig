@@ -1,0 +1,95 @@
+{% extends "layouts/site.twig" %}
+{% block content %}
+	<div style="margin-top: 70px" class="container">
+
+		<div class="row">
+			<div class="col-md-8">
+				{% if orcamento is defined %}
+					<h2>Editando Orcamento</h2>
+				{% else %}
+					<h2>Novo Orcamento</h2>
+				{% endif %}
+			</div>
+			<div class="col-md-4">
+				<a href="/orcamentos" class="btn btn-secondary btn-block">Voltar</a>
+			</div>
+		</div>
+
+		{% if success ==  true %}
+			<div class='alert alert-success' role='alert'>
+				Orcamento criado com sucesso!
+			</div>
+		{% endif %}
+		{% if success == false and message is defined %}
+			<div class='alert alert-danger' role='alert'>
+				{{ message }}
+			</div>
+		{% endif %}
+
+		<div class="row">
+			<div class="col-md-12">
+				<form method="POST">
+					<div class="row">
+						<div class="col-md-6">
+							<label for="name">Nome*</label>
+							{% if orcamento is defined %}
+								<input type="number" id="id" value="{{orcamento.id}}" readonly hidden name="id" class="form-control" required>
+								<input type="text" id="name" value="{{orcamento.name}}" name="name" class="form-control" required>
+							{% else %}
+								<input type="text" id="name" name="name" class="form-control" required>
+							{% endif %}
+						</div>
+						<div class="col-md-6">
+							<label for="value">Valor*</label>
+							{% if orcamento is defined %}
+								<input type="number" name="value" id="value" value="{{orcamento.value}}" class="form-control" required>
+							{% else %}
+								<input type="number" name="value" id="value" class="form-control" required>
+							{% endif %}
+						</div>
+						{% if orcamento is defined %}
+							<div class="col-md-6">
+								<label for="type">Tipo*</label>
+								<select class="form-control" value="{{ orcamento.option }}" id="option" name="option" aria-label="Default select example">
+									<option value="0">Lazer</option>
+									<option value="1">Saúde</option>
+									<option value="2">Alimentação</option>
+								</select>
+							</div>
+						{% else %}
+							<div class="col-md-6">
+								<label for="type">Tipo*</label>
+								<select class="form-control" id="option" name="option" aria-label="Default select example">
+									<option value="0">Lazer</option>
+									<option value="1">Saúde</option>
+									<option value="2">Alimentação</option>
+								</select>
+							</div>
+						{% endif %}
+						</div>
+
+						{% if orcamento is defined %}
+							<div class="row">
+								<div class="col-md-6">
+									<br>
+									<button class="btn btn-success btn-block" formaction="/orcamentos/editar" type="submit">Salvar</button>
+								</div>
+								<div class="col-md-3">
+									<br>
+									<button class="btn btn-danger btn-block" formaction="/orcamentos/excluir" type="submit">Excluir</button>
+								</div>
+							</div>
+						{% else %}
+							<div class="row">
+								<div class="col-md-3">
+									<br>
+									<button class="btn btn-success btn-block" formaction="/orcamentos/criar" type="submit">Salvar</button>
+								</div>
+							</div>
+						{% endif %}
+
+					</form>
+				</div>
+			</div>
+		</div>
+	{% endblock %}

@@ -1,8 +1,9 @@
 <?php
-
-namespace App\Controllers;
+ 
+ namespace App\Controllers;
 
 use App\Models\Orcamento;
+use App\Services\OrcamentoService;
 use App\Traits\ViewTrait;
 use Exception;
 
@@ -10,20 +11,35 @@ class OrcamentoController{
 
     use ViewTrait;
 
+    private $service;
+
+    public function __construct(OrcamentoService $service)
+    {
+        $this->service = $service;
+    }
+
     public function indexPage()
     {
-        $this->view('orcamentos.index');
+        $orcamentos = $this->service->get();
+
+        $this->view('orcamentos.index',["orcamentos" => $orcamentos]);
     }
     public function createPage()
     {
         $this->view('orcamentos.create');
     }
-
-    public function createModel()
+    public function updatePage($id)
     {
+        $orcamento= $this->service->find($id);
 
+        $this->view('orcamentos.create',["orcamento"=>$orcamento]);
+    }
+
+    public function updateModel()
+    {
         try {
             $cart = new Orcamento(
+                input()->post('id')->getValue(),
                 input()->post('name')->getValue(),
                 input()->post('value')->getValue(),
                 input()->post('option')->getValue(),
@@ -31,11 +47,42 @@ class OrcamentoController{
 
             Orcamento::validate($cart);
 
-            redirect('/orcamentos/criar?success=true');
+            $this->service->update($cart);
+
+            return $this->indexPage();
             
         } catch (Exception $e) {
             $message = $e->getMessage();
-            redirect("/orcamentos/criar?message=$message&success=false");
+            $this->view('orcamentos.create',["success"=> false,"message"=> $message]);
         }
     }
+    public function createModel()
+    {
+
+        try {
+            $cart = new Orcamento(
+                null,
+                input()->post('name'),
+                input()->post('value')->getValue(),
+                input()->post('option')->getValue(),
+            );
+
+            Orcamento::validate($cart);
+
+            $this->service->store($cart);
+
+           $this->view('orcamentos.create',["success"=> true]);
+            
+        } catch (Exception $e) {
+            $message = $e->getMessage();
+            $this->view('orcamentos.create',["success"=> false,"message"=> $message]);
+        }
+    }
+    public function deleteModel()
+    {
+        $this->service->delete(input()->post('id')->getValue());
+
+        return $this->indexPage();
+    }
 }
+

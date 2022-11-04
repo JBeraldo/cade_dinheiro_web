@@ -26,9 +26,13 @@ Router::get('/transacoes', [TransacaoController::class,'indexPage']);
 Router::get('/transacoes/criar', [TransacaoController::class,'createPage']);
 Router::post('/transacoes/criar', [TransacaoController::class,'createModel']);
 
+
 Router::get('/orcamentos', [OrcamentoController::class,'indexPage']);
 Router::get('/orcamentos/criar', [OrcamentoController::class,'createPage']);
+Router::get('/orcamentos/editar/{id}', [OrcamentoController::class,'updatePage']);
 Router::post('/orcamentos/criar', [OrcamentoController::class,'createModel']);
+Router::post('/orcamentos/editar', [OrcamentoController::class,'updateModel']);
+Router::post('/orcamentos/excluir', [OrcamentoController::class,'deleteModel']);
 
 Router::get('/database/up', [DatabaseController::class,'up']);
 

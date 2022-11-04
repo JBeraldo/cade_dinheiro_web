@@ -8,11 +8,16 @@ class Orcamento
 {
 
     public function __construct(
-        private readonly string $name,
-        private readonly string $value,
-        private readonly int $option
+        int $id = null,
+        string $name,
+        string $value,
+        int $option
     )
     {
+        $this->id = $id;
+        $this->name = $name;
+        $this->value= $value;
+        $this->option= $option;
     }
 
     /**

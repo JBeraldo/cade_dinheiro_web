@@ -1,0 +1,44 @@
+{% extends "layouts/site.twig" %}
+
+{% block content %}
+	<div style="margin-top: 70px" class="container">
+
+		<div class="row">
+			<div class="col-md-8">
+				<h2>Lista de Orçamentos</h2>
+			</div>
+			<div class="col-md-4">
+				<a href="/orcamentos/criar" class="btn btn-primary btn-block">Novo</a>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<table class="table">
+					<thead>
+						<th>ID</th>
+						<th>Nome</th>
+						<th>Opção</th>
+						<th>Total no orçamento</th>
+						<th>Editar</th>
+					</thead>
+					<tbody>
+						{% for orcamento in orcamentos %}
+							<tr>
+								<td class="text-left" colspan="1">{{ orcamento.id}}</td>
+								<td class="text-left" colspan="1">{{ orcamento.name}}</td>
+								<td class="text-left" colspan="1">{{ orcamento.option }}</td>
+								<td class="text-left" colspan="1">{{ orcamento.value }}</td>
+								<td class="text-left" colspan="1"><a class="btn btn-success" href="/orcamentos/editar/{{ orcamento.id}}">Editar</a></td>
+							</tr>
+						{% else %}
+							<tr>
+								<td class="text-center" colspan="4">Nenhum registro encontrado</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div></div>{% endblock %}
