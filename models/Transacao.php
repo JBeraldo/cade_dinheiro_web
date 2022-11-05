@@ -7,12 +7,23 @@ use Exception;
 class Transacao
 {
     public function __construct(
-        private readonly string $name,
-        private readonly int $option,
-        private readonly string $value,
-        private readonly string $date
+        int $id = null,
+        string $name,
+        int $option,
+        string $value,
+        string $date,
+        int $carteira_id = null,
+        int $orcamento_id = null
     )
     {
+        $this->id = $id;
+        $this->name = $name;
+        $this->option = $option;
+        $this->value = $value;
+        $this->date = $date;
+        $this->carteira_id = $carteira_id;
+        $this->orcamento_id = $orcamento_id;
+
     }
 
     /**
@@ -34,6 +45,8 @@ class Transacao
             throw new Exception('Valor é menor que zero');
         } elseif (!isset($transacao->date)) {
             throw new Exception("Data é obrigatório");
+        } elseif (!isset($transacao->carteira_id) && !isset($transacao->orcamento_id)) {
+            throw new Exception("Carteria ou Orçamento é obrigatório");
         }
     }
 }

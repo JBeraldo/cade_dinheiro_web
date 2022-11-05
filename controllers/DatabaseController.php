@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use PDO;
+
 define('MYSQL_HOST', 'localhost');
 define('MYSQL_USER', 'root');
 define('MYSQL_PASSWORD', 'root');
@@ -15,7 +17,7 @@ class DatabaseController
         $this->pdo = null;
     }
 
-    public function connect()
+    public function connect(): PDO
     {
         if ($this->pdo == null) {
             $this->pdo = new \PDO('mysql:host=' . MYSQL_HOST . ';dbname=' . MYSQL_DB_NAME, MYSQL_USER, MYSQL_PASSWORD);
@@ -23,7 +25,7 @@ class DatabaseController
         return $this->pdo;
     }
 
-    public function up()
+    public function up(): void
     {
         try {
             $this->connect();

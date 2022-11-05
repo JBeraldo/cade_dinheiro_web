@@ -12,8 +12,6 @@ class CarteiraController{
 
     use ViewTrait;
 
-    private $service;
-
     public function __construct(CarteiraService $service)
     {
         $this->service = $service;

@@ -1,0 +1,45 @@
+{% extends "layouts/site.twig" %}
+
+{% block content %}
+	<div style="margin-top: 70px" class="container">
+
+		<div class="row">
+			<div class="col-md-8">
+				<h2>Lista de Transações</h2>
+			</div>
+			<div class="col-md-4">
+				<a href="/transacoes/criar" class="btn btn-primary btn-block">Novo</a>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<table class="table">
+					<thead>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Tipo</th>
+                        <th>Valor</th>
+                        <th>Criado em</th>
+					</thead>
+					<tbody>
+						{% for transacao in transacoes %}
+							<tr>
+								<td class="text-left" colspan="1">{{ transacao.id}}</td>
+								<td class="text-left" colspan="1">{{ transacao.name}}</td>
+								<td class="text-left" colspan="1">{{ transacao.option }}</td>
+								<td class="text-left" colspan="1">{{ transacao.value }}</td>
+								<td class="text-left" colspan="1">{{ transacao.date }}</td>
+								<td class="text-left" colspan="1"><a class="btn btn-success" href="/transacoes/editar/{{ transacao.id}}">Editar</a></td>
+							</tr>
+						{% else %}
+							<tr>
+								<td class="text-center" colspan="6">Nenhum registro encontrado</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div></div>{% endblock %}

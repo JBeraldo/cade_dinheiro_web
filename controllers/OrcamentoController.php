@@ -11,8 +11,6 @@ class OrcamentoController{
 
     use ViewTrait;
 
-    private $service;
-
     public function __construct(OrcamentoService $service)
     {
         $this->service = $service;

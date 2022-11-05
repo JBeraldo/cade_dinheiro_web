@@ -24,8 +24,10 @@ Router::post('/carteiras/excluir', [CarteiraController::class,'deleteModel']);
 
 Router::get('/transacoes', [TransacaoController::class,'indexPage']);
 Router::get('/transacoes/criar', [TransacaoController::class,'createPage']);
+Router::get('/transacoes/editar/{id}', [TransacaoController::class,'updatePage']);
 Router::post('/transacoes/criar', [TransacaoController::class,'createModel']);
-
+Router::post('/transacoes/editar', [TransacaoController::class,'updateModel']);
+Router::post('/transacoes/excluir', [TransacaoController::class,'deleteModel']);
 
 Router::get('/orcamentos', [OrcamentoController::class,'indexPage']);
 Router::get('/orcamentos/criar', [OrcamentoController::class,'createPage']);

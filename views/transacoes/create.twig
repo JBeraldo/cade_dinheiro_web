@@ -1,0 +1,143 @@
+{% extends "layouts/site.twig" %}
+{% block content %}
+	<div style="margin-top: 70px" class="container">
+
+		<div class="row">
+			<div class="col-md-8">
+				{% if transacao is defined %}
+					<h2>Editando Transaçao</h2>
+				{% else %}
+					<h2>Nova Transaçao</h2>
+				{% endif %}
+			</div>
+			<div class="col-md-4">
+				<a href="/transacoes" class="btn btn-secondary btn-block">Voltar</a>
+			</div>
+		</div>
+
+		{% if success ==  true %}
+			<div class='alert alert-success' role='alert'>
+				Transaçao criada com sucesso!
+			</div>
+		{% endif %}
+		{% if success == false and message is defined %}
+			<div class='alert alert-danger' role='alert'>
+				{{ message }}
+			</div>
+		{% endif %}
+
+		<div class="row">
+			<div class="col-md-12">
+				<form method="POST">
+					<div class="row">
+						<div class="col-md-6">
+							<label for="name">Nome*</label>
+							{% if transacao is defined %}
+								<input type="number" id="id" value="{{transacao.id}}" readonly hidden name="id" class="form-control" required>
+								<input type="text" id="name" value="{{transacao.name}}" name="name" class="form-control" required>
+							{% else %}
+								<input type="text" id="name" name="name" class="form-control" required>
+							{% endif %}
+						</div>
+						<div class="col-md-6">
+							<label for="value">Valor*</label>
+							{% if transacao is defined %}
+								<input type="number" name="value" id="value" value="{{transacao.value}}" class="form-control" required>
+							{% else %}
+								<input type="number" name="value" id="value" class="form-control" required>
+							{% endif %}
+						</div>
+						{% if transacao is defined %}
+							<div class="col-md-6">
+								<label for="type">Carteira*</label>
+								<select class="form-control" id="carteira_id" value="{{transacao.carteira_id}}" name="carteira_id" aria-label="Default select example">
+								{% for carteira in carteiras %}
+									<option value="{{ carteira.id }}">{{carteira.name}}</option>
+								{% endfor %}
+								</select>
+							</div>
+						{% else %}
+							<div class="col-md-6">
+								<label for="type">Carteira*</label>
+								<select class="form-control" id="carteira_id" name="carteira_id" aria-label="Default select example">
+								{% for carteira in carteiras %}
+									<option value="{{ carteira.id }}">{{carteira.name}}</option>
+								{% endfor %}
+								</select>
+							</div>
+						{% endif %}
+						{% if transacao is defined %}
+							<div class="col-md-6">
+								<label for="type">Orcamento*</label>
+								<select class="form-control" id="carteira_id" value="{{transacao.orcamento_id}}" name="carteira_id" aria-label="Default select example">
+								{% for orcamento in orcamentos %}
+									<option value="{{ orcamento.id }}">{{orcamento.name}}</option>
+								{% endfor %}
+								</select>
+							</div>
+						{% else %}
+							<div class="col-md-6">
+								<label for="type">Orcamento*</label>
+								<select class="form-control" id="orcamento_id" name="orcamento_id" aria-label="Default select example">
+								{% for orcamento in orcamentos %}
+									<option value="{{ orcamento.id }}">{{orcamento.name}}</option>
+								{% endfor %}
+								</select>
+							</div>
+						{% endif %}
+						{% if transacao is defined %}
+							<div class="col-md-6">
+								<label for="type">Tipo*</label>
+								<select class="form-control" value="{{ transacao.option }}" id="option" name="option" aria-label="Default select example">
+									<option selected value="1">Entrada</option>
+									<option value="0">Saída</option>
+								</select>
+							</div>
+						{% else %}
+							<div class="col-md-6">
+								<label for="type">Tipo*</label>
+								<select class="form-control" id="option" name="option" aria-label="Default select example">
+									<option selected value="1">Entrada</option>
+									<option value="0">Saída</option>
+								</select>
+							</div>
+						{% endif %}
+						{% if transacao is defined %}
+							<div class="col-md-6">
+								<label for="date">Data*</label>
+								<input type="date" name="date" value="{{ transacao.date }}" id="date" class="form-control" required>
+							</div>
+						{% else %}
+							<div class="col-md-6">
+								<label for="date">Data*</label>
+								<input type="date" name="date" id="date" class="form-control" required>
+							</div>
+						{% endif %}
+
+					</div>
+
+					{% if transacao is defined %}
+						<div class="row">
+							<div class="col-md-6">
+								<br>
+								<button class="btn btn-success btn-block" formaction="/transacoes/editar" type="submit">Salvar</button>
+							</div>
+							<div class="col-md-3">
+								<br>
+								<button class="btn btn-danger btn-block" formaction="/transacoes/excluir" type="submit">Excluir</button>
+							</div>
+						</div>
+					{% else %}
+						<div class="row">
+							<div class="col-md-3">
+								<br>
+								<button class="btn btn-success btn-block" formaction="/transacoes/criar" type="submit">Salvar</button>
+							</div>
+						</div>
+					{% endif %}
+
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}
