@@ -1,0 +1,27 @@
+{% extends "layouts/site.twig" %}
+
+{% block content %}
+    <div class="container" style="margin-top: 50px">
+        <div class="row">
+            <div class="col-md-12">
+                <main>
+                    <form method="POST" action="/login">
+                        <div class="form-group">
+                            <label for="user">Usuário: </label>
+                            <input id="user" type="text" class="form-control" name="usuario" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Senha: </label>
+                            <input id="password" type="password" class="form-control" name="senha" />
+                        </div>
+
+                        <div class="row" style="justify-content: center;">
+                            <button class="btn btn-primary">Entrar</button>
+                        </div>
+                    </form>
+                </main>
+            </div>
+        </div>
+    </div>
+{% endblock %}

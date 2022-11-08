@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Http\Controllers;
 
 use PDO;
 
@@ -28,12 +28,12 @@ class DatabaseController
     public function up(): void
     {
         try {
-            $this->connect();
-            $this->pdo->beginTransaction();
+            $pdo = new \PDO('mysql:host=' . MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD);
+            $pdo->beginTransaction();
 
             $query = file_get_contents("Database/schema.sql");
 
-            $this->pdo->exec($query);
+            $pdo->exec($query);
 
         } catch (\Throwable$e) {
             throw $e;

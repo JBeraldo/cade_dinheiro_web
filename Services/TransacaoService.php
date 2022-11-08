@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Controllers\DatabaseController;
+use App\Http\Controllers\DatabaseController;
 use App\Helpers\Logger;
 use App\Models\Transacao;
 use PDO;

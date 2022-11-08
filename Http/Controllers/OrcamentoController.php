@@ -1,6 +1,6 @@
 <?php
  
- namespace App\Controllers;
+ namespace App\Http\Controllers;
 
 use App\Models\Orcamento;
 use App\Services\OrcamentoService;

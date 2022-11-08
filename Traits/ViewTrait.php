@@ -22,6 +22,7 @@ trait ViewTrait
     }
     public function checkLogin()
     {
+        session_start();
         if (isset($_SESSION["logado"]) && $_SESSION["logado"] == true) {
             return true;
         }

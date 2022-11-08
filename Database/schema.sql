@@ -39,6 +39,16 @@ CREATE TABLE IF NOT EXISTS `cade_meu_dinheiro`.`orcamentos` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Table `cade_meu_dinheiro`.`usuario`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `cade_meu_dinheiro`.`usuario` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) NOT NULL,
+  `password` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
 
 -- -----------------------------------------------------
 -- Table `cade_meu_dinheiro`.`transacoes`
